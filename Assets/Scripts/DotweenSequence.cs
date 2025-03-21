@@ -7,8 +7,10 @@ public class DotweenSequence : MonoBehaviour
 {
     public Transform target;
     public Image logoImage;
+    public Image cloudImage;
     public int resultNum;
     public Image[] resultImages;
+    public Button backButton;
     public LineRenderer[] lineRenderers;
     public TextMeshPro[] textObjects1;
     public TextMeshPro[] textObjects2;
@@ -27,45 +29,104 @@ public class DotweenSequence : MonoBehaviour
     
     void Start()
     {
-        LadderLinerenderer.SetActive(true);
+       
         
         buttons[0].onClick.AddListener(() =>
         {
-            Generate(textObjects1);
-            resultNum = 1;
+            cloudImage.DOFade(0f, 1f)
+                .OnComplete(() =>
+                {
+                    cloudImage.gameObject.SetActive(false);
+                    
+                    LadderLinerenderer.SetActive(true);
+                    
+                    Generate(textObjects1);
+                    resultNum = 1;
+                });
+           
         });
         
         buttons[1].onClick.AddListener(() =>
         {
-            Generate(textObjects2);
-            resultNum = 2;
+            cloudImage.DOFade(0f, 1f)
+                .OnComplete(() =>
+                {
+                    cloudImage.gameObject.SetActive(false);
+
+                    LadderLinerenderer.SetActive(true);
+
+                    Generate(textObjects2);
+                    resultNum = 2;
+                });
         });
         
         buttons[2].onClick.AddListener(() =>
         {
+            cloudImage.DOFade(0f, 1f)
+                .OnComplete(() =>
+                {
+                    cloudImage.gameObject.SetActive(false);
+
+                    LadderLinerenderer.SetActive(true);
+
             Generate(textObjects3);
             resultNum = 3;
+                });
+            
+            
         });
         
         buttons[3].onClick.AddListener(() =>
         {
-            Generate(textObjects4);
-            resultNum = 4;
+            cloudImage.DOFade(0f, 1f)
+                .OnComplete(() =>
+                {
+                    cloudImage.gameObject.SetActive(false);
+
+                    LadderLinerenderer.SetActive(true);
+
+                    Generate(textObjects4);
+                    resultNum = 4;
+                });
         });
         buttons[4].onClick.AddListener(() =>
         {
-            Generate(textObjects5);
-            resultNum = 5;
+            cloudImage.DOFade(0f, 1f)
+                .OnComplete(() =>
+                {
+                    cloudImage.gameObject.SetActive(false);
+
+                    LadderLinerenderer.SetActive(true);
+
+                    Generate(textObjects5);
+                    resultNum = 5;
+                });
         });
         buttons[5].onClick.AddListener(() =>
         {
-            Generate(textObjects6);
-            resultNum = 6;
+            cloudImage.DOFade(0f, 1f)
+                .OnComplete(() =>
+                {
+                    cloudImage.gameObject.SetActive(false);
+
+                    LadderLinerenderer.SetActive(true);
+
+                    Generate(textObjects6);
+                    resultNum = 6;
+                });
         });
         buttons[6].onClick.AddListener(() =>
         {
-            Generate(textObjects7);
-            resultNum = 7;
+            cloudImage.DOFade(0f, 1f)
+                .OnComplete(() =>
+                {
+                    cloudImage.gameObject.SetActive(false);
+
+                    LadderLinerenderer.SetActive(true);
+
+                    Generate(textObjects7);
+                    resultNum = 7;
+                });
         });
     }
 
@@ -91,12 +152,14 @@ public class DotweenSequence : MonoBehaviour
             Draw(i);
         }
         
+        
         sequence.Play();
         
         
         void Init (int index)
         {
             lineRenderers[index].gameObject.SetActive(true);
+            lineRenderers[index].positionCount = 2;
             lineRenderers[index].SetPosition(0, textObjects[index].transform.position);
             lineRenderers[index].SetPosition(1, textObjects[index].transform.position);
         }
@@ -104,6 +167,7 @@ public class DotweenSequence : MonoBehaviour
         void Draw(int index)
         {
             float duration = Vector3.Distance(textObjects[index].transform.position, textObjects[index + 1].transform.position) / speed;
+            
             sequence.Append(DOTween.To(
                     () => lineRenderers[index].GetPosition(1), x => lineRenderers[index].SetPosition(1, x), textObjects[index + 1].transform.position, duration)
                 .SetEase(Ease.Linear).OnUpdate(() => 
@@ -114,7 +178,10 @@ public class DotweenSequence : MonoBehaviour
                 Init(index + 1);
             });
             
-            sequence.OnComplete(() => ResultImage());
+            sequence.OnComplete(() =>
+            {
+                Invoke("ResultImage", 1f);
+            });
         }
     }
     
@@ -123,37 +190,38 @@ public class DotweenSequence : MonoBehaviour
         logoImage.enabled = false;
         LadderLinerenderer.SetActive(false);
         DrawLinerenderer.SetActive(false);
+        //backButton.gameObject.SetActive(true);
         Debug.Log("Result Image");
         
         
         switch (resultNum)
         {
             case 1:
-                resultImages[0].enabled = true;
+                resultImages[0].gameObject.SetActive(true);
                 Debug.Log("Result 1");
                 break;
             case 2:
-                resultImages[1].enabled = true;
+                resultImages[1].gameObject.SetActive(true);
                 Debug.Log("Result 2");
                 break;
             case 3:
-                resultImages[2].enabled = true;
+                resultImages[2].gameObject.SetActive(true);
                 Debug.Log("Result 3");
                 break;
             case 4:
-                resultImages[3].enabled = true;
+                resultImages[3].gameObject.SetActive(true);
                 Debug.Log("Result 4");
                 break;
             case 5:
-                resultImages[4].enabled = true;
+                resultImages[4].gameObject.SetActive(true);
                 Debug.Log("Result 5");
                 break;
             case 6:
-                resultImages[5].enabled = true;
+                resultImages[5].gameObject.SetActive(true);
                 Debug.Log("Result 6");
                 break;
             case 7:
-                resultImages[6].enabled = true;
+                resultImages[6].gameObject.SetActive(true);
                 Debug.Log("Result 7");
                 break;
         }
