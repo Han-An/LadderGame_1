@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Page_LadderBackgound_Fix 1_0: 3537271061005291275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

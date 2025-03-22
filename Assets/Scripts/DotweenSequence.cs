@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
@@ -29,10 +30,14 @@ public class DotweenSequence : MonoBehaviour
     
     void Start()
     {
-       
-        
         buttons[0].onClick.AddListener(() =>
         {
+        
+            foreach (var button in buttons)
+            {
+                button.enabled = false;
+            }
+
             cloudImage.DOFade(0f, 1f)
                 .OnComplete(() =>
                 {
@@ -48,6 +53,12 @@ public class DotweenSequence : MonoBehaviour
         
         buttons[1].onClick.AddListener(() =>
         {
+        
+            foreach (var button in buttons)
+            {
+                button.enabled = false;
+            }
+
             cloudImage.DOFade(0f, 1f)
                 .OnComplete(() =>
                 {
@@ -62,6 +73,12 @@ public class DotweenSequence : MonoBehaviour
         
         buttons[2].onClick.AddListener(() =>
         {
+        
+            foreach (var button in buttons)
+            {
+                button.enabled = false;
+            }
+
             cloudImage.DOFade(0f, 1f)
                 .OnComplete(() =>
                 {
@@ -78,6 +95,12 @@ public class DotweenSequence : MonoBehaviour
         
         buttons[3].onClick.AddListener(() =>
         {
+        
+            foreach (var button in buttons)
+            {
+                button.enabled = false;
+            }
+
             cloudImage.DOFade(0f, 1f)
                 .OnComplete(() =>
                 {
@@ -91,6 +114,12 @@ public class DotweenSequence : MonoBehaviour
         });
         buttons[4].onClick.AddListener(() =>
         {
+        
+            foreach (var button in buttons)
+            {
+                button.enabled = false;
+            }
+
             cloudImage.DOFade(0f, 1f)
                 .OnComplete(() =>
                 {
@@ -104,6 +133,12 @@ public class DotweenSequence : MonoBehaviour
         });
         buttons[5].onClick.AddListener(() =>
         {
+        
+            foreach (var button in buttons)
+            {
+                button.enabled = false;
+            }
+
             cloudImage.DOFade(0f, 1f)
                 .OnComplete(() =>
                 {
@@ -117,6 +152,12 @@ public class DotweenSequence : MonoBehaviour
         });
         buttons[6].onClick.AddListener(() =>
         {
+        
+            foreach (var button in buttons)
+            {
+                button.enabled = false;
+            }
+
             cloudImage.DOFade(0f, 1f)
                 .OnComplete(() =>
                 {
@@ -132,17 +173,13 @@ public class DotweenSequence : MonoBehaviour
 
     private void Generate(TextMeshPro[] textObjects)
     {
-        foreach (var button in buttons)
-        {
-            logoImage.enabled = true;
-            button.enabled = false;
-        }
-        
+        logoImage.enabled = true;
         
         foreach (var line in lineRenderers)
         {
             line.gameObject.SetActive(false);
         }
+        
         Init(0);
         
         Sequence sequence = DOTween.Sequence();
@@ -162,6 +199,7 @@ public class DotweenSequence : MonoBehaviour
             lineRenderers[index].positionCount = 2;
             lineRenderers[index].SetPosition(0, textObjects[index].transform.position);
             lineRenderers[index].SetPosition(1, textObjects[index].transform.position);
+            target.position = lineRenderers[index].GetPosition(1);
         }
 
         void Draw(int index)
@@ -190,41 +228,35 @@ public class DotweenSequence : MonoBehaviour
         logoImage.enabled = false;
         LadderLinerenderer.SetActive(false);
         DrawLinerenderer.SetActive(false);
-        //backButton.gameObject.SetActive(true);
-        Debug.Log("Result Image");
-        
         
         switch (resultNum)
         {
             case 1:
                 resultImages[0].gameObject.SetActive(true);
-                Debug.Log("Result 1");
                 break;
             case 2:
                 resultImages[1].gameObject.SetActive(true);
-                Debug.Log("Result 2");
                 break;
             case 3:
                 resultImages[2].gameObject.SetActive(true);
-                Debug.Log("Result 3");
                 break;
             case 4:
                 resultImages[3].gameObject.SetActive(true);
-                Debug.Log("Result 4");
                 break;
             case 5:
                 resultImages[4].gameObject.SetActive(true);
-                Debug.Log("Result 5");
                 break;
             case 6:
                 resultImages[5].gameObject.SetActive(true);
-                Debug.Log("Result 6");
                 break;
             case 7:
                 resultImages[6].gameObject.SetActive(true);
-                Debug.Log("Result 7");
                 break;
         }
     }
-   
+
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
+    }
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f412c65204e5143cb857a2f5cd68b69a
+guid: b2c0a33c1baf8d5469017e01dfe0b3cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1063932720094406230
-    second: Page_Start_1_0
+      213: 384303574313093299
+    second: etevers icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Page_Start_1_0
+      name: etevers icon_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 810
-        height: 1440
+        x: 19
+        y: 45
+        width: 471
+        height: 399
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa99bd9f3d62c31f0800000000000000
-      internalID: -1063932720094406230
+      spriteID: 3b848d09012555500800000000000000
+      internalID: 384303574313093299
       vertices: []
       indices: 
       edges: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Page_Start_1_0: -1063932720094406230
+      etevers icon_0: 384303574313093299
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
